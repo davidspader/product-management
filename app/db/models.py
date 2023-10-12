@@ -10,7 +10,7 @@ class Category(Base):
     slug = Column('slug', String, nullable=False)
     products = relationship('Product', back_populates='category')
 
-class Category(Base):
+class Product(Base):
     __tablename__ = 'products'
     id = Column('id', Integer, primary_key=True, autoincrement=True)
     name = Column('name', String, nullable=False)
