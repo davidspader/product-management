@@ -1,6 +1,6 @@
 import pytest
 from app.schemas.product import Product, ProductInput, ProductOutput
-from app.schemas.category import Category
+from app.schemas.category import Category, CategoryOutput
 
 def test_product_schema():
     product = Product(
@@ -75,7 +75,7 @@ def test_product_input_schema():
     }
 
 def test_product_output_schema():
-    category = Category(name='Roupa', slug='roupa')
+    categoryOutput = CategoryOutput(id=1, name='Roupa', slug='roupa')
 
     product_output = ProductOutput(
         id=1,
@@ -83,7 +83,7 @@ def test_product_output_schema():
         slug='camisa',
         price=10,
         stock=10,
-        category=category
+        category=categoryOutput
     )
 
     assert product_output.dict() == {
@@ -93,6 +93,7 @@ def test_product_output_schema():
         'price': 10,
         'stock': 10,
         'category': {
+            'id': 1,
             'name': 'Roupa',
             'slug': 'roupa'
         }
