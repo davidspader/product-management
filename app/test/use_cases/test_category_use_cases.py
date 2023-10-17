@@ -3,6 +3,7 @@ from app.use_cases.category import CategoryUseCases
 from app.db.models import Category as CategoryModel
 from app.schemas.category import Category, CategoryOutput
 from fastapi.exceptions import HTTPException
+from fastapi_pagination import Page
 
 def test_add_category_uc(db_session):
     uc = CategoryUseCases(db_session)
@@ -26,13 +27,14 @@ def test_add_category_uc(db_session):
 def test_list_categories(db_session, categories_on_db):
     uc = CategoryUseCases(db_session=db_session)
 
-    categories = uc.list_categories()
+    page = uc.list_categories(page=1, size=2)
 
-    assert len(categories) == 4
-    assert type(categories[0] == CategoryOutput)
-    assert categories[0].id == categories_on_db[0].id
-    assert categories[0].name == categories_on_db[0].name
-    assert categories[0].slug == categories_on_db[0].slug
+    assert type(page) == Page
+    assert len(page.items) == 2
+    assert page.total == 4
+    assert page.page == 1
+    assert page.size == 2
+    assert page.pages == 2
 
 def test_delete_category(db_session):
     category_model = CategoryModel(name='Roupa', slug='roupa')
