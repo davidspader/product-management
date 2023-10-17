@@ -1,4 +1,3 @@
-from typing import List
 from fastapi import APIRouter, Response, Depends, status, Query
 from sqlalchemy.orm import Session
 from app.routes.deps import get_db_session, auth

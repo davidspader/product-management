@@ -1,7 +1,7 @@
 import pytest
 from fastapi.exceptions import HTTPException
 from app.db.models import Product as ProductModel
-from app.schemas.product import Product, ProductOutput
+from app.schemas.product import Product
 from app.use_cases.product import ProductUseCases
 from fastapi_pagination import Page
 

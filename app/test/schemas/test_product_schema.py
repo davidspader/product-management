@@ -1,6 +1,6 @@
 import pytest
 from app.schemas.product import Product, ProductInput, ProductOutput
-from app.schemas.category import Category, CategoryOutput
+from app.schemas.category import CategoryOutput
 
 def test_product_schema():
     product = Product(

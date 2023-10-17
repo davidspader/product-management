@@ -1,4 +1,3 @@
-from typing import List
 from fastapi import APIRouter, Depends, Response, status, Query
 from sqlalchemy.orm import Session
 from app.schemas.category import Category, CategoryOutput
